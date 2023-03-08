@@ -4,8 +4,18 @@ const grid = document.querySelector('.grid');
 const defaultColor = "darkcyan"
 
 const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click', reset);
 
-resetBtn.addEventListener("click", reset);
+const resizeBtn = document.querySelector('#resize');
+resizeBtn.addEventListener('click', () => {
+	size = prompt("Please enter a number between 1 and 100")
+	if(size >= 1 && size <= 100){
+		while(grid.firstChild){
+			grid.removeChild(grid.lastChild);
+		}
+		createGrid(size, defaultColor);
+	}
+});
 
 function createGrid(size, color){
 	let cellSize = getCellSize(size);
@@ -19,7 +29,7 @@ function createGrid(size, color){
 			cell.classList.add('cell');
 			cell.style.width = cellSize.toString() + "px";
 			cell.style.height = cellSize.toString() + "px";
-			cell.addEventListener("mouseover", (event) => {
+			cell.addEventListener('mouseover', (event) => {
 				event.target.style.backgroundColor = color;
 			});
 		    row.appendChild(cell);
