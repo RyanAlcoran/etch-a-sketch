@@ -1,5 +1,5 @@
 const defaultSize = 16;
-const defaultContainerSize = 700;
+const defaultContainerSize = 650;
 const grid = document.querySelector('.grid');
 const defaultColor = "darkcyan"
 
