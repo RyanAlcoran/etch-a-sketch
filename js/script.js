@@ -1,7 +1,11 @@
 const defaultSize = 16;
-const defaultContainerSize = 750;
+const defaultContainerSize = 700;
 const grid = document.querySelector('.grid');
 const defaultColor = "darkcyan"
+
+const resetBtn = document.querySelector('#reset');
+
+resetBtn.addEventListener("click", reset);
 
 function createGrid(size, color){
 	let cellSize = getCellSize(size);
@@ -25,5 +29,12 @@ function createGrid(size, color){
 
 function getCellSize(size){
 	return defaultContainerSize / size;
+}
+
+function reset() {
+	while(grid.firstChild){
+		grid.removeChild(grid.lastChild);
+	}
+	createGrid(defaultSize, defaultColor);
 }
 createGrid(defaultSize, defaultColor);
